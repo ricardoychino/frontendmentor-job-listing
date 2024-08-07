@@ -23,8 +23,10 @@ $header-bg-mobile: '@/assets/images/bg-header-mobile.svg';
 a {
   font-weight: 500;
   text-decoration: inherit;
+  color: $primary;
 }
 a:hover {
+  opacity: 0.8;
 }
 
 body {
@@ -62,8 +64,10 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+  background-color: $primary;
 }
 button:hover {
+  opacity: 0.8;
 }
 button:focus,
 button:focus-visible {
