@@ -88,7 +88,6 @@ const { appliedFilters, toggleFilter } = inject("TagFilters");
 
 <style lang="scss" scoped>
 .job-item {
-  $round: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -106,7 +105,7 @@ const { appliedFilters, toggleFilter } = inject("TagFilters");
     left: 0;
     bottom: 0;
     width: 8px;
-    border-radius: $round 0 0 $round;
+    border-radius: $card-radius 0 0 $card-radius;
     background-color: $primary;
   }
 }
