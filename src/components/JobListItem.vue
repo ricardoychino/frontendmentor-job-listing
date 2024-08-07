@@ -2,7 +2,7 @@
 import BadgeMain from "@/components/BadgeMain.vue";
 import BadgeSkills from "@/components/BadgeSkills.vue";
 import type { Job } from "../types/JobList.d.ts";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 
 const props = withDefaults(defineProps<Job>(), {
   logo: "",
@@ -20,6 +20,8 @@ const props = withDefaults(defineProps<Job>(), {
 const companyLogo = computed(() =>
   props.logo !== "" ? props.logo : "@/assets/images/placeholder.jpg",
 );
+
+const { appliedFilters, toggleFilter } = inject("TagFilters");
 </script>
 
 <template>
@@ -48,11 +50,33 @@ const companyLogo = computed(() =>
 
     <div class="tags">
       <!-- Role -->
-      <BadgeSkills v-if="role !== ''">{{ role }}</BadgeSkills>
+      <BadgeSkills
+        v-if="role !== ''"
+        :isSelected="appliedFilters['role'].includes(role)"
+        @click="toggleFilter('role', role)"
+        >{{ role }}</BadgeSkills
+      >
       <!-- Level -->
-      <BadgeSkills v-if="level !== ''">{{ level }}</BadgeSkills>
-      <!-- Languages & Tools -->
-      <BadgeSkills v-for="item of [...languages, ...tools]">
+      <BadgeSkills
+        v-if="level !== ''"
+        :isSelected="appliedFilters['level'].includes(level)"
+        @click="toggleFilter('level', level)"
+        >{{ level }}</BadgeSkills
+      >
+      <!-- Languages -->
+      <BadgeSkills
+        v-for="item of languages"
+        :isSelected="appliedFilters['languages'].includes(item)"
+        @click="toggleFilter('languages', item)"
+      >
+        {{ item }}
+      </BadgeSkills>
+      <!-- Tools -->
+      <BadgeSkills
+        v-for="item of tools"
+        :isSelected="appliedFilters['tools'].includes(item)"
+        @click="toggleFilter('tools', item)"
+      >
         {{ item }}
       </BadgeSkills>
     </div>

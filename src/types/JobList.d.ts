@@ -13,3 +13,5 @@ export type Job = {
   languages?: string[],
   tools?: string[]
 }
+
+export type Filters = Record<string, string[]>

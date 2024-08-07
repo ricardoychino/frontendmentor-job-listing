@@ -1,21 +1,21 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    color?: string;
+    isSelected?: boolean;
   }>(),
   {
-    color: "#5ba4a4",
+    isSelected: false,
   },
 );
 </script>
 
 <template>
-  <span class="badge-skills" :style="{ backgroundColor: `${color}33`, color }">
+  <span class="badge-skills" :class="{ selected: isSelected }">
     <slot></slot>
   </span>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .badge-skills {
   display: inline-flex;
   margin: 0 0.25em 0.5em;
@@ -25,5 +25,13 @@ withDefaults(
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 1px;
+  cursor: pointer;
+  color: $primary;
+  background-color: #{$primary}33;
+
+  &.selected {
+    color: #fff;
+    background-color: $primary;
+  }
 }
 </style>
