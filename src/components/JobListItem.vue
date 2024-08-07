@@ -4,11 +4,7 @@ import BadgeSkills from "@/components/BadgeSkills.vue";
 import type { Job } from "../types/JobList.d.ts";
 import { computed } from "vue";
 
-type JobProps = Job & {
-  isActive?: boolean;
-};
-
-const props = withDefaults(defineProps<JobProps>(), {
+const props = withDefaults(defineProps<Job>(), {
   logo: "",
   new: false,
   featured: false,
@@ -19,7 +15,6 @@ const props = withDefaults(defineProps<JobProps>(), {
   location: "",
   languages: () => [],
   tools: () => [],
-  isActive: false,
 });
 
 const companyLogo = computed(() =>
@@ -29,7 +24,7 @@ const companyLogo = computed(() =>
 
 <template>
   <!-- Item Start -->
-  <div class="job-item" :class="{ active: isActive }">
+  <div class="job-item" :class="{ highlighted: featured }">
     <figure class="logo">
       <img :src="companyLogo" :alt="`${company} logo`" />
     </figure>
@@ -82,7 +77,7 @@ const companyLogo = computed(() =>
     margin-bottom: 20px;
   }
 
-  &.active::before {
+  &.highlighted::before {
     content: "";
     position: absolute;
     top: 0;
@@ -90,7 +85,7 @@ const companyLogo = computed(() =>
     bottom: 0;
     width: 8px;
     border-radius: $round 0 0 $round;
-    background-color: var(--primary);
+    background-color: $primary;
   }
 }
 .logo {

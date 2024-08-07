@@ -11,5 +11,7 @@ const listed = computed(() => jobs.value);
 </script>
 
 <template>
-  <JobListItem v-for="job in listed" v-bind="job" :key="job.id" />
+  <div class="job-list">
+    <JobListItem v-for="job in listed" v-bind="job" :key="job.id" />
+  </div>
 </template>
