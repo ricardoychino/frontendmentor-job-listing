@@ -26,7 +26,7 @@ const { appliedFilters, toggleFilter } = inject("TagFilters");
 
 <template>
   <!-- Item Start -->
-  <div class="job-item" :class="{ highlighted: featured }">
+  <div class="job-item card" :class="{ highlighted: featured }">
     <figure class="logo">
       <img :src="companyLogo" :alt="`${company} logo`" />
     </figure>
@@ -52,21 +52,23 @@ const { appliedFilters, toggleFilter } = inject("TagFilters");
       <!-- Role -->
       <BadgeSkills
         v-if="role !== ''"
-        :isSelected="appliedFilters['role'].includes(role)"
+        :isSelected="appliedFilters.includes(role)"
         @click="toggleFilter('role', role)"
-        >{{ role }}</BadgeSkills
       >
+        {{ role }}
+      </BadgeSkills>
       <!-- Level -->
       <BadgeSkills
         v-if="level !== ''"
-        :isSelected="appliedFilters['level'].includes(level)"
+        :isSelected="appliedFilters.includes(level)"
         @click="toggleFilter('level', level)"
-        >{{ level }}</BadgeSkills
       >
+        {{ level }}
+      </BadgeSkills>
       <!-- Languages -->
       <BadgeSkills
         v-for="item of languages"
-        :isSelected="appliedFilters['languages'].includes(item)"
+        :isSelected="appliedFilters.includes(item)"
         @click="toggleFilter('languages', item)"
       >
         {{ item }}
@@ -74,7 +76,7 @@ const { appliedFilters, toggleFilter } = inject("TagFilters");
       <!-- Tools -->
       <BadgeSkills
         v-for="item of tools"
-        :isSelected="appliedFilters['tools'].includes(item)"
+        :isSelected="appliedFilters.includes(item)"
         @click="toggleFilter('tools', item)"
       >
         {{ item }}
@@ -90,11 +92,7 @@ const { appliedFilters, toggleFilter } = inject("TagFilters");
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: #fff;
   margin-bottom: 50px;
-  padding: 20px;
-  border-radius: $round;
-  box-shadow: 0 5px 20px -10px $primary;
 
   @media screen and (min-width: $bp-small) {
     flex-direction: row;

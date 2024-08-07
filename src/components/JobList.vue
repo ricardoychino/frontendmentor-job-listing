@@ -10,36 +10,17 @@ const keysToFilter = ["role", "level", "languages", "tools"];
 
 const jobs = ref<Job[]>(data);
 
-const { filters, appliedFilters, toggleFilter } = useTagFilter(
+const { appliedFilters, toggleFilter, isResult } = useTagFilter(
   keysToFilter,
   data,
 );
 
-const hasFilter = computed(() =>
-  Object.values(appliedFilters.value).some((values) => values.length > 0),
-);
+const hasFilter = computed(() => appliedFilters.value.length > 0);
 
 const listed = computed(() =>
   !hasFilter.value
     ? jobs.value
-    : jobs.value.filter((job: Job) => {
-        for (let key of keysToFilter) {
-          if (appliedFilters.value[key].length === 0) continue;
-          if (
-            !Array.isArray(job[key]) &&
-            !appliedFilters.value[key].includes(job[key])
-          ) {
-            return false;
-          }
-          if (
-            Array.isArray(job[key]) &&
-            !appliedFilters.value[key].some((f: string) => job[key].includes(f))
-          ) {
-            return false;
-          }
-        }
-        return true;
-      }),
+    : jobs.value.filter((job: Job) => isResult(job)),
 );
 
 provide("TagFilters", { appliedFilters, toggleFilter });
