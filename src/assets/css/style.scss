@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+$header-bg: '@/assets/images/bg-header-desktop.svg';
+$header-bg-mobile: '@/assets/images/bg-header-mobile.svg';
+
 
 * {
   box-sizing: border-box;
@@ -19,11 +22,9 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
 }
 
 body {
@@ -31,6 +32,20 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: $background;
+}
+
+#page-header {
+  height: 80px;
+  background-color: $primary;
+  background-image: url($header-bg-mobile);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 20px $primary;
+
+  @media screen and (min-width: $bp-medium) {
+    background-image: url($header-bg);
+  }
 }
 
 h1 {
@@ -45,20 +60,14 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
 }
 
 #app {
@@ -70,13 +79,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
