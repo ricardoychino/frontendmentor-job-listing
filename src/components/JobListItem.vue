@@ -193,5 +193,14 @@ const { appliedFilters, toggleFilter } = inject(
   @media screen and (min-width: $bp-medium) {
     margin-left: auto;
   }
+
+  & > :deep(.badge-skills) {
+    transition: all 0.1s linear;
+
+    &:hover {
+      color: #fff;
+      background-color: $very-dark-grayish-cyan;
+    }
+  }
 }
 </style>
