@@ -96,7 +96,7 @@ const { appliedFilters, toggleFilter } = inject(
   position: relative;
   margin-bottom: 50px;
 
-  @media screen and (min-width: $bp-small) {
+  @media screen and (min-width: $bp-medium) {
     flex-direction: row;
     margin-bottom: 20px;
   }
@@ -129,7 +129,7 @@ const { appliedFilters, toggleFilter } = inject(
     object-fit: cover;
   }
 
-  @media screen and (min-width: $bp-small) {
+  @media screen and (min-width: $bp-medium) {
     --logo-width: 80px;
     justify-content: center;
     align-items: center;
@@ -178,7 +178,7 @@ const { appliedFilters, toggleFilter } = inject(
     }
   }
 
-  @media screen and (min-width: $bp-small) {
+  @media screen and (min-width: $bp-medium) {
     padding: 0 20px;
     border: none;
     margin: 0;
@@ -190,7 +190,7 @@ const { appliedFilters, toggleFilter } = inject(
   align-items: center;
   flex-wrap: wrap;
 
-  @media screen and (min-width: $bp-small) {
+  @media screen and (min-width: $bp-medium) {
     margin-left: auto;
   }
 }
