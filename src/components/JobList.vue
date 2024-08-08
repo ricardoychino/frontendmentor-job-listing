@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, provide } from "vue";
 import { useTagFilter } from "@/composables/useTagFilter";
+import type { UseTagFilterRes } from "@/composables/useTagFilter";
 import JobListItem from "@/components/JobListItem.vue";
 import CurrentFilters from "@/components/CurrentFilters.vue";
 
@@ -11,10 +12,8 @@ const keysToFilter = ["role", "level", "languages", "tools"];
 
 const jobs = ref<Job[]>(data);
 
-const { appliedFilters, toggleFilter, isResult, clearFilter } = useTagFilter(
-  keysToFilter,
-  data,
-);
+const { appliedFilters, toggleFilter, isResult, clearFilter }: UseTagFilterRes =
+  useTagFilter(keysToFilter, data);
 
 const hasFilter = computed(() => appliedFilters.value.length > 0);
 

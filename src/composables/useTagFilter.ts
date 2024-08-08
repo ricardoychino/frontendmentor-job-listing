@@ -3,7 +3,7 @@ import { useLocalSetStorage } from './useLocalSetStorage';
 import type { Ref } from 'vue';
 import type { Filters } from '@/types/JobList'
 
-type UseTagFilter = {
+export type UseTagFilterRes = {
   filters: Filters;
   appliedFilters: Ref<string[]>;
   toggleFilter: (key: string, value: string) => void;
@@ -12,7 +12,7 @@ type UseTagFilter = {
   clearFilter: () => void
 };
 
-export const useTagFilter = (keysForTags: string[], initialData: any[]): UseTagFilter => {
+export const useTagFilter = (keysForTags: string[], initialData: any[]): UseTagFilterRes => {
 
   const filters: Filters = {}
 

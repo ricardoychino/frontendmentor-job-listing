@@ -14,5 +14,10 @@
     // Do not forget to `npm i -D tsconfig-paths`
     "require": ["tsconfig-paths/register"]
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts",
+    "./src/*.ts",
+    "./src/*.vue",
+    "./src/*.ext",
+  ]
 }

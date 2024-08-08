@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { computed, inject } from "vue";
 import BadgeMain from "@/components/BadgeMain.vue";
 import BadgeSkills from "@/components/BadgeSkills.vue";
-import type { Job } from "../types/JobList.d.ts";
-import { computed, inject } from "vue";
+import type { Job } from "@/types/JobList.d.ts";
+import type { UseTagFilterRes } from "@/composables/useTagFilter.ts";
 
 const props = withDefaults(defineProps<Job>(), {
   logo: "",
@@ -21,7 +22,9 @@ const companyLogo = computed(() =>
   props.logo !== "" ? props.logo : "@/assets/images/placeholder.jpg",
 );
 
-const { appliedFilters, toggleFilter } = inject("TagFilters");
+const { appliedFilters, toggleFilter } = inject(
+  "TagFilters",
+) as UseTagFilterRes;
 </script>
 
 <template>

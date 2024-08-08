@@ -2,7 +2,11 @@
 import { inject } from "vue";
 import BadgeSkills from "@/components/BadgeSkills.vue";
 
-const { appliedFilters, toggleFilter, clearFilter } = inject("TagFilters");
+import type { UseTagFilterRes } from "@/composables/useTagFilter";
+
+const { appliedFilters, toggleFilter, clearFilter } = inject(
+  "TagFilters",
+) as UseTagFilterRes;
 </script>
 
 <template>
