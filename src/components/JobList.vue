@@ -32,28 +32,41 @@ provide("TagFilters", { appliedFilters, toggleFilter, clearFilter });
     <Transition name="slide-fade">
       <CurrentFilters v-show="hasFilter" />
     </Transition>
-    <JobListItem v-for="job in listed" v-bind="job" :key="job.id" />
+    <TransitionGroup name="slide-fade-group">
+      <JobListItem v-for="job in listed" v-bind="job" :key="job.id" />
+    </TransitionGroup>
   </div>
 </template>
 
 <style scoped>
 .slide-fade-enter-from,
-.slide-fade-leave-to {
+.slide-fade-leave-to,
+.slide-fade-group-enter-from,
+.slide-fade-group-leave-to {
   max-height: 0;
   opacity: 0;
-  transform: translateY(-20px);
   margin-bottom: 0;
+  overflow: hidden;
 }
-.slide-fade-leave-active {
-  transition: all 0.15s linear;
+.slide-fade-enter-from,
+.slide-fade-group-enter-from {
+  transform: translateY(20px);
 }
-.slide-fade-enter-active {
+.slide-fade-leave-to,
+.slide-fade-group-leave-to {
+  transform: translateY(-20px);
+}
+.slide-fade-leave-active,
+.slide-fade-group-leave-active,
+.slide-fade-enter-active,
+.slide-fade-group-enter-active {
   transition: all 0.3s linear;
 }
 .slide-fade-leave-from,
-.slide-fade-enter-to {
+.slide-fade-enter-to,
+.slide-fade-group-leave-from,
+.slide-fade-group-enter-to {
   max-height: 100vh;
   opacity: 1;
-  transform: none;
 }
 </style>
