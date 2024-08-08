@@ -1,4 +1,5 @@
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
+import { useLocalSetStorage } from './useLocalSetStorage';
 import type { Ref } from 'vue';
 import type { Filters } from '@/types/JobList'
 
@@ -14,7 +15,8 @@ type UseTagFilter = {
 export const useTagFilter = (keysForTags: string[], initialData: any[]): UseTagFilter => {
 
   const filters: Filters = {}
-  const internalList = ref(new Set<string>())
+
+  const internalList = useLocalSetStorage('tag-filter', [])
   const keyByValue = new Map<string, string>()
 
   // Extract the tags per property

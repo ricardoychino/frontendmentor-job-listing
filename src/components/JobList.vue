@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, Ref, provide } from "vue";
+import { ref, computed, provide } from "vue";
 import { useTagFilter } from "@/composables/useTagFilter";
 import JobListItem from "@/components/JobListItem.vue";
 import CurrentFilters from "@/components/CurrentFilters.vue";
