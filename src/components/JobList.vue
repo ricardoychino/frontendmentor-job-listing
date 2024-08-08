@@ -29,7 +29,31 @@ provide("TagFilters", { appliedFilters, toggleFilter, clearFilter });
 
 <template>
   <div class="job-list">
-    <CurrentFilters v-show="hasFilter" />
+    <Transition name="slide-fade">
+      <CurrentFilters v-show="hasFilter" />
+    </Transition>
     <JobListItem v-for="job in listed" v-bind="job" :key="job.id" />
   </div>
 </template>
+
+<style scoped>
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  margin-bottom: 0;
+}
+.slide-fade-leave-active {
+  transition: all 0.15s linear;
+}
+.slide-fade-enter-active {
+  transition: all 0.3s linear;
+}
+.slide-fade-leave-from,
+.slide-fade-enter-to {
+  max-height: 100vh;
+  opacity: 1;
+  transform: none;
+}
+</style>

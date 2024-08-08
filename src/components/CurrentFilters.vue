@@ -45,6 +45,8 @@ const { appliedFilters, toggleFilter, clearFilter } = inject("TagFilters");
   }
 }
 .clear-btn {
+  display: block;
+  padding: 0.25em 0.625em 0em;
   margin-left: auto;
   text-decoration: underline;
 }
