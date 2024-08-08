@@ -183,6 +183,7 @@ const { appliedFilters, toggleFilter } = inject("TagFilters");
 }
 .tags {
   display: flex;
+  gap: 0.5em;
   align-items: center;
   flex-wrap: wrap;
 

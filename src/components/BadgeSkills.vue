@@ -18,7 +18,6 @@ withDefaults(
 <style lang="scss" scoped>
 .badge-skills {
   display: inline-flex;
-  margin: 0 0.25em 0.5em;
   padding: 0.25em 0.625em 0em;
   border-radius: 2.5px;
   font-size: 0.85em;
@@ -28,6 +27,7 @@ withDefaults(
   cursor: pointer;
   color: $primary;
   background-color: #{$primary}33;
+  overflow: hidden;
 
   &.selected {
     color: #fff;

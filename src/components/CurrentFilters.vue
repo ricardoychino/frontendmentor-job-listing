@@ -8,13 +8,44 @@ const { appliedFilters, toggleFilter, clearFilter } = inject("TagFilters");
 <template>
   <div class="current-filters card">
     <div class="applied-list">
-      <BadgeSkills v-for="filter in appliedFilters">{{ filter }}</BadgeSkills>
+      <BadgeSkills v-for="filter in appliedFilters">
+        {{ filter }}
+        <button class="close-badge" @click="toggleFilter('', filter)">
+          &#x2715;
+        </button>
+      </BadgeSkills>
     </div>
-    <a href="javascript:void(0)" @click="clearFilter()">Clear</a>
+    <a href="javascript:void(0)" class="clear-btn" @click="clearFilter()">
+      Clear
+    </a>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .current-filters {
+  display: flex;
+  align-items: center;
+}
+.applied-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.close-badge {
+  color: #fff;
+  padding: 10px;
+  line-height: 1;
+  border-radius: 0;
+  margin: -10px;
+  margin-left: 5px;
+
+  &:hover {
+    opacity: 1;
+    background-color: $very-dark-grayish-cyan;
+  }
+}
+.clear-btn {
+  margin-left: auto;
+  text-decoration: underline;
 }
 </style>
